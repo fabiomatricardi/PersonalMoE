@@ -1,0 +1,149 @@
+GEMMA2-2b
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = gemma2
+llm_load_print_meta: vocab type       = SPM
+llm_load_print_meta: n_vocab          = 256000
+llm_load_print_meta: n_merges         = 0
+llm_load_print_meta: n_ctx_train      = 8192
+llm_load_print_meta: model ftype      = Q5_K - Medium
+llm_load_print_meta: model params     = 2.61 B
+llm_load_print_meta: model size       = 1.79 GiB (5.87 BPW)
+llm_load_print_meta: general.name     = Gemma 2 2b It
+llm_load_print_meta: BOS token        = 2 '<bos>'
+llm_load_print_meta: EOS token        = 1 '<eos>'
+llm_load_print_meta: UNK token        = 3 '<unk>'
+llm_load_print_meta: PAD token        = 0 '<pad>'
+llm_load_print_meta: LF token         = 227 '<0x0A>'
+llm_load_print_meta: EOT token        = 107 '<end_of_turn>'
+Available chat formats from metadata: chat_template.default
+Using gguf chat template: {{ bos_token }}{% if messages[0]['role'] == 'system' %}{{ raise_exception('System role not supported') }}{% endif %}{% for message in messages %}{% if (message['role'] == 'user') != (loop.index0 % 2 == 0) %}{{ raise_exception('Conversation roles must alternate user/assistant/user/assistant/...') }}{% endif %}{% if (message['role'] == 'assistant') %}{% set role = 'model' %}{% else %}{% set role = message['role'] %}{% endif %}{{ '<start_of_turn>' + role + '
+' + message['content'] | trim + '<end_of_turn>
+' }}{% endfor %}{% if add_generation_prompt %}{{'<start_of_turn>model
+'}}{% endif %}
+Using chat eos_token: <eos>
+Using chat bos_token: <bos>
+
+
+NOMIC EMBEDDINGS
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = nomic-bert
+llm_load_print_meta: vocab type       = WPM
+llm_load_print_meta: n_vocab          = 30528
+llm_load_print_meta: n_merges         = 0
+llm_load_print_meta: n_ctx_train      = 2048
+llm_load_print_meta: n_embd           = 768
+llm_load_print_meta: n_yarn_orig_ctx  = 2048
+llm_load_print_meta: rope_finetuned   = unknown
+llm_load_print_meta: ssm_d_conv       = 0
+llm_load_print_meta: ssm_d_inner      = 0
+llm_load_print_meta: ssm_d_state      = 0
+llm_load_print_meta: ssm_dt_rank      = 0
+llm_load_print_meta: model type       = 137M
+llm_load_print_meta: model ftype      = Q8_0
+llm_load_print_meta: model params     = 136.73 M
+llm_load_print_meta: model size       = 138.66 MiB (8.51 BPW)
+llm_load_print_meta: general.name     = Nomic Embed Text v1.5
+llm_load_print_meta: UNK token        = 100 '[UNK]'
+llm_load_print_meta: SEP token        = 102 '[SEP]'
+llm_load_print_meta: PAD token        = 0 '[PAD]'
+llm_load_print_meta: CLS token        = 101 '[CLS]'
+llm_load_print_meta: MASK token       = 103 '[MASK]'
+llm_load_print_meta: LF token         = 0 '[PAD]'
+NO CHAT TEMPLATE
+
+
+NuEXTRACT MINI
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = qwen2
+llm_load_print_meta: vocab type       = BPE
+llm_load_print_meta: n_vocab          = 151936
+llm_load_print_meta: n_merges         = 151387
+llm_load_print_meta: n_ctx_train      = 32768
+llm_load_print_meta: n_embd           = 1024
+llm_load_print_meta: model type       = 0.5B
+llm_load_print_meta: model ftype      = BF16
+llm_load_print_meta: model params     = 463.99 M
+llm_load_print_meta: model size       = 885.22 MiB (16.00 BPW)
+llm_load_print_meta: general.name     = Qwen1.5 0.5B
+llm_load_print_meta: BOS token        = 151643 '<|endoftext|>'
+llm_load_print_meta: EOS token        = 151646 '<|end-output|>'
+llm_load_print_meta: PAD token        = 151643 '<|endoftext|>'
+llm_load_print_meta: LF token         = 148848 'ÄĬ'
+llm_load_print_meta: EOT token        = 151645 '<|im_end|>'
+Available chat formats from metadata: chat_template.default
+Using gguf chat template: {% for message in messages %}{% if loop.first and messages[0]['role'] != 'system' %}{{ '<|im_start|>system
+You are a helpful assistant<|im_end|>
+' }}{% endif %}{{'<|im_start|>' + message['role'] + '
+' + message['content'] + '<|im_end|>' + '
+'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant
+' }}{% endif %}
+Using chat eos_token: <|end-output|>
+Using chat bos_token: <|endoftext|>
+
+
+Phi 3.5 Mini instruct_Uncensored
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = phi3
+llm_load_print_meta: vocab type       = SPM
+llm_load_print_meta: n_vocab          = 32064
+llm_load_print_meta: n_merges         = 0
+llm_load_print_meta: vocab_only       = 0
+llm_load_print_meta: n_ctx_train      = 131072
+llm_load_print_meta: n_embd           = 3072
+llm_load_print_meta: model type       = 3B
+llm_load_print_meta: model ftype      = Q6_K
+llm_load_print_meta: model params     = 3.82 B
+llm_load_print_meta: model size       = 2.96 GiB (6.66 BPW)
+llm_load_print_meta: general.name     = Phi 3.5 Mini instruct_Uncensored
+llm_load_print_meta: BOS token        = 1 '<s>'
+llm_load_print_meta: EOS token        = 32000 '<|endoftext|>'
+llm_load_print_meta: UNK token        = 0 '<unk>'
+llm_load_print_meta: PAD token        = 32000 '<|endoftext|>'
+llm_load_print_meta: LF token         = 13 '<0x0A>'
+llm_load_print_meta: EOT token        = 32007 '<|end|>'
+Available chat formats from metadata: chat_template.default
+Using gguf chat template: {{ bos_token }}{% for message in messages %}{% if (message['role'] == 'system') %}{{'<|system|>' + '
+' + message['content'] + '<|end|>' + '
+'}}{% elif (message['role'] == 'user') %}{{'<|user|>' + '
+' + message['content'] + '<|end|>' + '
+' + '<|assistant|>' + '
+'}}{% elif message['role'] == 'assistant' %}{{message['content'] + '<|end|>' + '
+'}}{% endif %}{% endfor %}
+Using chat eos_token: <|endoftext|>
+Using chat bos_token: <s>
+
+
+QWEN2-0.5b INSTRUCT
+llm_load_print_meta: format           = GGUF V3 (latest)
+llm_load_print_meta: arch             = qwen2
+llm_load_print_meta: vocab type       = BPE
+llm_load_print_meta: n_vocab          = 151936
+llm_load_print_meta: n_merges         = 151387
+llm_load_print_meta: vocab_only       = 0
+llm_load_print_meta: n_ctx_train      = 32768
+llm_load_print_meta: n_embd           = 896
+llm_load_print_meta: model type       = 1B
+llm_load_print_meta: model ftype      = Q8_0
+llm_load_print_meta: model params     = 494.03 M
+llm_load_print_meta: model size       = 500.79 MiB (8.50 BPW)
+llm_load_print_meta: general.name     = qwen2-0_5b-instruct
+llm_load_print_meta: BOS token        = 151643 '<|endoftext|>'
+llm_load_print_meta: EOS token        = 151645 '<|im_end|>'
+llm_load_print_meta: PAD token        = 151643 '<|endoftext|>'
+llm_load_print_meta: LF token         = 148848 'ÄĬ'
+llm_load_print_meta: EOT token        = 151645 '<|im_end|>'
+Available chat formats from metadata: chat_template.default
+Using gguf chat template: {% for message in messages %}{% if loop.first and messages[0]['role'] != 'system' %}{{ '<|im_start|>system
+You are a helpful assistant.<|im_end|>
+' }}{% endif %}{{'<|im_start|>' + message['role'] + '
+' + message['content'] + '<|im_end|>' + '
+'}}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant
+' }}{% endif %}
+Using chat eos_token: <|im_end|>
+Using chat bos_token: <|endoftext|>
+
+
+
+
+
+
